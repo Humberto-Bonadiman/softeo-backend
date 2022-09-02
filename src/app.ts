@@ -1,6 +1,8 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
+import dentistRouter from './routes/dentistRoute';
+import loginRouter from './routes/loginRoute';
 
 class App {
   public app: express.Express;
@@ -24,8 +26,8 @@ class App {
     this.app.get('/', (_req, res) => {
       res.status(200).json({ message: 'Rodando' });
     });
-    this.app.use('/dentist');
-    this.app.use('/login');
+    this.app.use('/dentist', dentistRouter);
+    this.app.use('/login', loginRouter);
   }
 
   public start(PORT: string | number):void {
