@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import ErrorMessage from '../enums/ErrorMessage';
 
-export const schemeLogin = Joi.object({
+export const schemeDentist = Joi.object({
   email: Joi.string().email().required().messages({
     'string.empty': ErrorMessage.NOT_EMPTY,
     'string.required': ErrorMessage.NOT_EMPTY,
@@ -30,7 +30,7 @@ const validadeDentist = async (req: Request, res: Response, next: NextFunction) 
   if (user) {
     return res.status(401).json({ message: ErrorMessage.EXISTING_EMAIL });
   }
-  const { error } = schemeLogin.validate({ email, name, password });
+  const { error } = schemeDentist.validate({ email, name, password });
   if (error) {
     return res.status(401).json({ message: error.message });
   }
