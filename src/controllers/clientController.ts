@@ -14,6 +14,17 @@ class ClientController {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
     }
   }
+
+  public async findAll(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization;
+      const clientService = new ClientService();
+      const findAllClients = await clientService.findAll(token as string);
+      return res.status(StatusCode.OK).json(findAllClients);
+    } catch (error) {
+      return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
+    }
+  }
 }
 
 export default ClientController;

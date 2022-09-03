@@ -5,7 +5,7 @@ import { clientInterface } from '../interfaces/clientInterface';
 import { JWT_SECRET } from '../utils/config';
 
 class ClientService {
-  async create(elementsClient: clientInterface, token: string) {
+  public async create(elementsClient: clientInterface, token: string) {
     try {
       const { name, treatment, value, numberPlots } = elementsClient;
       const decoded = verify(token, JWT_SECRET as string);
@@ -21,6 +21,19 @@ class ClientService {
         }
       });
       return createClient;
+    } catch (err) {
+      throw Error;
+    }
+  }
+
+  public async findAll(token: string) {
+    try {
+      verify(token, JWT_SECRET as string, function(err) { 
+        if (err) throw Error;
+      }); 
+      const prisma = new PrismaClient();
+      const findAllClients = await prisma.client.findMany();
+      return findAllClients;
     } catch (err) {
       throw Error;
     }
