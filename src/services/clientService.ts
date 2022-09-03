@@ -47,6 +47,23 @@ class ClientService {
       throw Error;
     }
   }
+
+  public async updateById(id: string, elementsClient: clientInterface) {
+    try {
+      const prisma = new PrismaClient();
+      const { name, treatment, value, numberPlots } = elementsClient;
+      await prisma.client.update({
+        where: { id },
+        data: { name, treatment, value, numberPlots },
+      });
+      const updateClientById = await prisma.client.findUniqueOrThrow({
+        where: { id },
+      });
+      return updateClientById;
+    } catch (err) {
+      throw Error;
+    }
+  }
 }
 
 export default ClientService;
