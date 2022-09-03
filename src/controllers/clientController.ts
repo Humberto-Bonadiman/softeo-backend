@@ -48,6 +48,17 @@ class ClientController {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
     }
   }
+
+  public async deleteById(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const clientService = new ClientService();
+      await clientService.deleteById(id);
+      return res.status(StatusCode.NO_CONTENT);
+    } catch (error) {
+      return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
+    }
+  }
 }
 
 export default ClientController;

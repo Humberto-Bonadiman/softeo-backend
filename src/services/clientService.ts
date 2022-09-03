@@ -64,6 +64,15 @@ class ClientService {
       throw Error;
     }
   }
+
+  public async deleteById(id: string) {
+    try {
+      const prisma = new PrismaClient();
+      await prisma.client.delete({ where: { id } })
+    } catch (err) {
+      throw Error;
+    }
+  }
 }
 
 export default ClientService;
