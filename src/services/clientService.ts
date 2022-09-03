@@ -26,14 +26,23 @@ class ClientService {
     }
   }
 
-  public async findAll(token: string) {
+  public async findAll() {
     try {
-      verify(token, JWT_SECRET as string, function(err) { 
-        if (err) throw Error;
-      }); 
       const prisma = new PrismaClient();
       const findAllClients = await prisma.client.findMany();
       return findAllClients;
+    } catch (err) {
+      throw Error;
+    }
+  }
+
+  public async findById(id: string) {
+    try {
+      const prisma = new PrismaClient();
+      const findClientById = await prisma.client.findUniqueOrThrow({
+        where: { id },
+      });
+      return findClientById;
     } catch (err) {
       throw Error;
     }

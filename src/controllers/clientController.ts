@@ -15,12 +15,22 @@ class ClientController {
     }
   }
 
-  public async findAll(req: Request, res: Response) {
+  public async findAll(_req: Request, res: Response) {
     try {
-      const token = req.headers.authorization;
       const clientService = new ClientService();
-      const findAllClients = await clientService.findAll(token as string);
+      const findAllClients = await clientService.findAll();
       return res.status(StatusCode.OK).json(findAllClients);
+    } catch (error) {
+      return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
+    }
+  }
+
+  public async findById(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const clientService = new ClientService();
+      const findClientById = await clientService.findById(id);
+      return res.status(StatusCode.OK).json(findClientById );
     } catch (error) {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
     }
