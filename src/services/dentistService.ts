@@ -4,11 +4,11 @@ import { dentistInterface } from '../interfaces/dentistInterface';
 import { JWT_SECRET } from '../utils/config';
 
 class DentistService {
-  async create(elements: dentistInterface) {
+  create(elements: dentistInterface) {
     try {
       const { email, name, password } = elements;
       const prisma = new PrismaClient();
-      const createDentist = await prisma.dentist.create({
+      const createDentist = prisma.dentist.create({
         data: {
           email,
           name,
@@ -17,6 +17,7 @@ class DentistService {
       });
       return createDentist;
     } catch (err) {
+      console.log(err);
       throw Error;
     }
   }
@@ -38,7 +39,9 @@ class DentistService {
         expiresIn: '7d',
         algorithm: "HS256"
       };
-      const token = sign({ data: user?.email }, JWT_SECRET as string, jwtConfig as object);
+      const token = sign({
+        data: { id: user?.id ,email: user?.email,  }, 
+      }, JWT_SECRET as string, jwtConfig as object);
       return token;
     } catch (err) {
       throw Error;

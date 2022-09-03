@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
+import clientRouter from './routes/clientRoute';
 
 class App {
   public app: express.Express;
@@ -28,6 +29,7 @@ class App {
     });
     this.app.use('/dentist', dentistRouter);
     this.app.use('/login', loginRouter);
+    this.app.use('/client', clientRouter);
   }
 
   public start(PORT: string | number):void {

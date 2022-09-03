@@ -3,29 +3,29 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Dentist {
-  id  String  @id @default(uuid())
-  email String  @unique
-  name  String?
-  password  String
-  client  Client[]
+  id       String   @id @default(uuid())
+  email    String   @unique
+  name     String?
+  password String
+  client   Client[]
 
   @@map("dentist")
 }
 
 model Client {
-  id  String @id @default(uuid())
-  name  String
-  treatment String
-  date  DateTime @default(now())
-  value Decimal
+  id          String   @id @default(uuid())
+  name        String
+  treatment   String
+  date        DateTime @default(now())
+  value       Decimal
   numberPlots Int
-  dentist Dentist @relation(fields: [dentistId], references: [id])
-  dentistId String
+  dentistId   String
+  dentist     Dentist  @relation(fields: [dentistId], references: [id])
 
   @@map("client")
 }

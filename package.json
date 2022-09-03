@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "npx prisma generate && npx prisma migrate dev && ts-node prisma/seed.ts",
     "start": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
     "start-docker": "sudo service postgresql stop && docker-compose up -d && nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
     "dev": "npx ts-node src/server.ts",
