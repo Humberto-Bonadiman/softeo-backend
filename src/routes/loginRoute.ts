@@ -1,10 +1,10 @@
 import * as express from 'express';
 import DentistController from '../controllers/dentistController';
-import validate from '../middlewares/validateLogin';
+import { validateLogin } from '../middlewares/validateLogin';
 
 const loginRouter = express.Router();
 
 loginRouter
-  .post('/', validate.validateLogin, new DentistController().login);
+  .post('/', validateLogin, new DentistController().login);
 
 export default loginRouter;

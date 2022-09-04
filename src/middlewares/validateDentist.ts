@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import ErrorMessage from '../enums/ErrorMessage';
 
-export const schemeDentist = Joi.object({
+const schemeDentist = Joi.object({
   email: Joi.string().email().required().messages({
     'string.empty': ErrorMessage.NOT_EMPTY,
     'string.required': ErrorMessage.NOT_EMPTY,
@@ -19,7 +19,7 @@ export const schemeDentist = Joi.object({
   }),
 });
 
-const validadeDentist = async (req: Request, res: Response, next: NextFunction) => {
+export const validateDentist = async (req: Request, res: Response, next: NextFunction) => {
   const { email, name, password } = req.body;
   if (!email || !password) {
     return res.status(401).json({ message: ErrorMessage.NOT_EMPTY });
@@ -36,5 +36,3 @@ const validadeDentist = async (req: Request, res: Response, next: NextFunction) 
   }
   return next();
 };
-
-export default { validadeDentist };
