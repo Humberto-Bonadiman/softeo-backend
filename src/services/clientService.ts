@@ -5,7 +5,7 @@ import { clientInterface } from '../interfaces/clientInterface';
 import { JWT_SECRET } from '../utils/config';
 
 class ClientService {
-  public async changeTime(dateTime: Date) {
+  public changeTime(dateTime: Date) {
     return dateTime.toLocaleString("pt-Br",{
       dateStyle: "short",
       timeStyle: "short",
@@ -30,14 +30,19 @@ class ClientService {
           dentistId: idDentist,
         }
       });
+      const dat = createClient.date.toLocaleString("pt-Br",{
+        dateStyle: "short",
+        timeStyle: "short",
+        timeZone: "America/Sao_Paulo"
+      });
       return {
         id: createClient.id,
         name: createClient.name,
         treatment: createClient.treatment,
-        date: this.changeTime(createClient.date),
+        date: dat,
         value: createClient.value,
         numberPlots: createClient.numberPlots,
-        // valuePlots: createClient.valuePlots,
+        valuePlots: createClient.valuePlots,
         dentistId: createClient.dentistId
       };
     } catch (err) {

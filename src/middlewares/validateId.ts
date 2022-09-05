@@ -5,7 +5,7 @@ import ErrorMessage from '../enums/ErrorMessage';
 
 const prisma = new PrismaClient();
 
-export const schemeId = Joi.object({ id: Joi.number().required() });
+export const schemeId = Joi.object({ id: Joi.string().required() });
 
 const validateId = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
