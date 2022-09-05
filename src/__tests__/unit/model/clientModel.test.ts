@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import { expect } from 'chai';
-import { prisma } from '../client';
-import clientMock from '../mocks/clientMock';
+import { prisma } from '../../client';
+import clientMock from '../../mocks/clientMock';
 import { Prisma } from '@prisma/client';
 
 describe('Create a new client', () => {

@@ -1,9 +1,9 @@
 import sinon from 'sinon';
 import { expect } from 'chai';
-import { prisma } from '../client';
-import dentistMock from '../mocks/dentistMock';
+import { prisma } from '../../client';
+import dentistMock from '../../mocks/dentistMock';
 
-describe('Create a new dentist', () => {
+describe('Create a new dentist by model', () => {
   describe('when it is created successfully', () => {
     let create: sinon.SinonStub;
     before(() => {
@@ -25,8 +25,8 @@ describe('Create a new dentist', () => {
         expect(response).to.have.a.property('email');
         expect(response).to.have.a.property('name');
         expect(response).to.have.a.property('password');
-        expect(response.email).to.be.equal('joao_ricardo@email.com');
-        expect(response.name).to.be.equal('João Ricardo');
+        expect(response.email).to.be.equal('email_for_test@email.com');
+        expect(response.name).to.be.equal('Email For Test');
 
         await prisma.dentist.delete({ where: { email: response.email }});
       });
