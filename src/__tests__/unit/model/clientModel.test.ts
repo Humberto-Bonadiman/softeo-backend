@@ -21,7 +21,7 @@ describe('Create a new client', () => {
   describe('when it is successfully entered', () => {
     it('returns an object with the correct data', async () => {
       const response = await prisma.client.create({
-        data: clientMock.newClient
+        data: clientMock.newClientMock
       });
 
       expect(response).to.be.an('object');

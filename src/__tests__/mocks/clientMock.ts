@@ -1,6 +1,10 @@
 import { Prisma } from '@prisma/client';
 
-const date = new Date();
+const date = new Date().toLocaleString("pt-Br",{
+  dateStyle: "short",
+  timeStyle: "short",
+  timeZone: "America/Sao_Paulo"
+});
 
 const newClient = {
   name: 'Luiz da Silva Azevedo',
@@ -8,6 +12,23 @@ const newClient = {
   date,
   value: new Prisma.Decimal(100.55),
   numberPlots: 1,
+};
+
+const newSecondClient = {
+  name: 'Ricardo Da Silva Azevedo',
+  treatment: 'Tratamento de canal',
+  date,
+  value: new Prisma.Decimal(1000.00),
+  numberPlots: 4,
+};
+
+const newClientMock = {
+  name: 'Luiz da Silva Azevedo',
+  treatment: 'Limpeza',
+  date,
+  value: new Prisma.Decimal(100.55),
+  numberPlots: 1,
+  valuePlots: '100.55',
   dentistId: 'first101',
 };
 
@@ -18,7 +39,28 @@ const createdClient = {
   date,
   value: new Prisma.Decimal(100.55),
   numberPlots: 1,
+  valuePlots: '100.55',
   dentistId: 'first101',
-}
+};
 
-export default { newClient, createdClient };
+const secondClient = {
+  id: '1641-hfe29-c3rf8-ar3819-aw245',
+  name: 'Ricardo Da Silva Azevedo',
+  treatment: 'Tratamento de canal',
+  date,
+  value: new Prisma.Decimal(1000.00),
+  numberPlots: 4,
+  valuePlots: '250.00',
+  dentistId: 'first101'
+};
+
+const listClients = [createdClient, secondClient];
+
+export default {
+  newClient,
+  newSecondClient,
+  createdClient,
+  newClientMock,
+  secondClient,
+  listClients,
+};

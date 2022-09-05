@@ -20,6 +20,19 @@ const createdSecondDentist = {
   password: 'password_second'
 };
 
+const newDentistClient: dentistInterface = {
+  email: 'cliente_test@email.com',
+  name: 'Client Test',
+  password: 'password_client'
+};
+
+const dentistClient = {
+  id: '1641-hfe28-c2rf8-739128fa',
+  email: 'cliente_test@email.com',
+  name: 'Client Test',
+  password: 'password_client'
+}
+
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTYyZTc0MzctYjJiZC00ODhjLWJhZTAtNzU1MWI1ZmU3MzgwIiwiZW1haWwiOiJlbWFpbF9mb3JfdGVzdEBlbWFpbC5jb20ifSwiaWF0IjoxNjYyMzQ5OTQzLCJleHAiOjE2NjI5NTQ3NDN9.hzrzGnuPDyZiUNxkSmVKOkz4Rsc_BtZkiTsXnHBmBrA";
 
 const withoutEmail = {
@@ -51,6 +64,8 @@ export default {
   newDentist,
   createdDentist,
   token,
+  newDentistClient,
+  dentistClient,
   withoutEmail,
   withoutPassword,
   createdSecondDentist,

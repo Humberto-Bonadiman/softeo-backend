@@ -5,41 +5,30 @@ import { clientInterface } from '../interfaces/clientInterface';
 import { JWT_SECRET } from '../utils/config';
 
 class ClientService {
-  public async changeTime(dateTime: Date) {
-    return dateTime.toLocaleString("pt-Br",{
-      dateStyle: "short",
-      timeStyle: "short",
-      timeZone: "America/Sao_Paulo"
-    });
-  }
-
   public async create(elementsClient: clientInterface, token: string) {
     try {
       const { name, treatment, value, numberPlots } = elementsClient;
       const decoded = verify(token, JWT_SECRET as string);
       const idDentist = (decoded as tokenInterface).data.id;
       const prisma = new PrismaClient();
+      const date = new Date().toLocaleString("pt-Br",{
+        dateStyle: "short",
+        timeStyle: "short",
+        timeZone: "America/Sao_Paulo"
+      });
       const valuePlots = (parseFloat(value.toString()) / numberPlots).toFixed(2);
       const createClient = await prisma.client.create({
         data: {
           name,
           treatment,
           value,
+          date,
           numberPlots,
           valuePlots,
           dentistId: idDentist,
         }
       });
-      return {
-        id: createClient.id,
-        name: createClient.name,
-        treatment: createClient.treatment,
-        date: this.changeTime(createClient.date),
-        value: createClient.value,
-        numberPlots: createClient.numberPlots,
-        // valuePlots: createClient.valuePlots,
-        dentistId: createClient.dentistId
-      };
+      return createClient;
     } catch (err) {
       throw Error;
     }
@@ -61,16 +50,7 @@ class ClientService {
       const findClientById = await prisma.client.findUniqueOrThrow({
         where: { id },
       });
-      return {
-        id: findClientById.id,
-        name: findClientById.name,
-        treatment: findClientById.treatment,
-        date: this.changeTime(findClientById.date),
-        value: findClientById.value,
-        numberPlots: findClientById.numberPlots,
-        valuePlots: findClientById.valuePlots,
-        dentistId: findClientById.dentistId
-      };
+      return findClientById;
     } catch (err) {
       throw Error;
     }
@@ -87,16 +67,7 @@ class ClientService {
       const updateClientById = await prisma.client.findUniqueOrThrow({
         where: { id },
       });
-      return {
-        id: updateClientById.id,
-        name: updateClientById.name,
-        treatment: updateClientById.treatment,
-        date: this.changeTime(updateClientById.date),
-        value: updateClientById.value,
-        numberPlots: updateClientById.numberPlots,
-        valuePlots: updateClientById.valuePlots,
-        dentistId: updateClientById.dentistId
-      };
+      return updateClientById;
     } catch (err) {
       throw Error;
     }

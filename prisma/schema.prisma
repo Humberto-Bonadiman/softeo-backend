@@ -21,7 +21,7 @@ model Client {
   id          String   @id @default(uuid())
   name        String
   treatment   String
-  date        DateTime @default(now())
+  date        String
   value       Decimal
   numberPlots Int
   valuePlots  String

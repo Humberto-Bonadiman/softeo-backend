@@ -14,9 +14,10 @@ CREATE TABLE `client` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `treatment` VARCHAR(191) NOT NULL,
-    `date` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `date` VARCHAR(191) NOT NULL,
     `value` DECIMAL(65, 30) NOT NULL,
     `numberPlots` INTEGER NOT NULL,
+    `valuePlots` VARCHAR(191) NOT NULL,
     `dentistId` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)
