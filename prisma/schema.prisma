@@ -24,6 +24,7 @@ model Client {
   date        DateTime @default(now())
   value       Decimal
   numberPlots Int
+  valuePlots  String
   dentistId   String
   dentist     Dentist  @relation(fields: [dentistId], references: [id])
 
