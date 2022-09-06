@@ -131,3 +131,62 @@ describe('Find a client by id in service', () => {
     });
   });
 });
+
+describe('Update a client by id in service', () => {
+  describe('when update the client', () => {
+    let updateById: sinon.SinonStub;
+    before(() => {
+      updateById = sinon
+        .stub(prisma.client, 'update')
+        .resolves(clientMock.createdClient);
+    });
+
+    after(() => {
+      updateById.restore();
+    });
+    it('return the expected data', async () => {
+      const dentist = await dentistService.create(dentistMock.newDentistClient);
+      const token = await dentistService.login(dentist.email, dentist.password);
+
+      const client = await clientService.create(clientMock.newClient, token);
+      const response = await clientService.updateById(client.id, clientMock.updateClient);
+
+      expect(response.id).to.be.an('string');
+      expect(response.name).to.be.equal('Luiz Silveira Azevedo');
+      expect(response.treatment).to.be.equal('Limpeza');
+      expect(typeof response.value).to.be.equal(typeof new Prisma.Decimal(120.00));
+      expect(response.numberPlots).to.be.equal(1);
+      expect(response.valuePlots).to.be.equal('120.00');
+      expect(response.dentistId).to.be.equal(dentist.id);
+
+      await prisma.client.delete({ where: { id: client.id } });
+      await prisma.dentist.delete({ where: { email: dentist.email } });
+    })
+  });
+});
+
+describe('Delete a client by id in service', () => {
+  describe('when delete the client', () => {
+    let deleteById: sinon.SinonStub;
+    before(() => {
+      deleteById = sinon
+        .stub(prisma.client, 'delete')
+        .resolves(clientMock.createdClient);
+    });
+
+    after(() => {
+      deleteById.restore();
+    });
+    it('return the expected data', async () => {
+      const dentist = await dentistService.create(dentistMock.newDentistClient);
+      const token = await dentistService.login(dentist.email, dentist.password);
+
+      const client = await clientService.create(clientMock.newClient, token);
+      const response = await clientService.deleteById(client.id);
+
+      expect(response).to.be.equal(undefined);
+
+      await prisma.dentist.delete({ where: { email: dentist.email } });
+    })
+  });
+});

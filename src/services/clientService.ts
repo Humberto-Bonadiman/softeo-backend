@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { verify } from 'jsonwebtoken';
 import { tokenInterface } from '../interfaces/tokenInterface';
-import { clientInterface } from '../interfaces/clientInterface';
+import { clientInterface, clientWithDateInterface } from '../interfaces/clientInterface';
 import { JWT_SECRET } from '../utils/config';
 
 class ClientService {
@@ -56,13 +56,14 @@ class ClientService {
     }
   }
 
-  public async updateById(id: string, elementsClient: clientInterface) {
+  public async updateById(id: string, elementsClient: clientWithDateInterface) {
     try {
       const prisma = new PrismaClient();
-      const { name, treatment, value, numberPlots } = elementsClient;
+      const { name, treatment, value, date, numberPlots } = elementsClient;
+      const valuePlots = (parseFloat(value.toString()) / numberPlots).toFixed(2);
       await prisma.client.update({
         where: { id },
-        data: { name, treatment, value, numberPlots },
+        data: { name, treatment, value, date, numberPlots, valuePlots },
       });
       const updateClientById = await prisma.client.findUniqueOrThrow({
         where: { id },

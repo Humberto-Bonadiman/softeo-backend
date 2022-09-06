@@ -22,6 +22,14 @@ const newSecondClient = {
   numberPlots: 4,
 };
 
+const updateClient = {
+  name: 'Luiz Silveira Azevedo',
+  treatment: 'Limpeza',
+  date,
+  value: new Prisma.Decimal(120.00),
+  numberPlots: 1,
+};
+
 const newClientMock = {
   name: 'Luiz da Silva Azevedo',
   treatment: 'Limpeza',
@@ -59,6 +67,7 @@ const listClients = [createdClient, secondClient];
 export default {
   newClient,
   newSecondClient,
+  updateClient,
   createdClient,
   newClientMock,
   secondClient,

@@ -6,3 +6,7 @@ export interface clientInterface {
   value: Decimal,
   numberPlots: number
 }
+
+export interface clientWithDateInterface extends clientInterface {
+  date: string
+}
