@@ -89,6 +89,45 @@ describe('Find all clients by service', () => {
       expect(responseSecond?.valuePlots).to.be.equal('250.00');
       expect(responseFirst?.dentistId).to.be.equal(firstClient.dentistId);
       expect(responseSecond?.dentistId).to.be.equal(secondClient.dentistId);
+
+      await prisma.client.deleteMany({
+        where: { id: { in: [firstClient.id, secondClient.id] } }
+      });
+      await prisma.dentist.delete({ where: { email: dentist.email } });
+    });
+  });
+});
+
+describe('Find a client by id in service', () => {
+  describe('when find the client', () => {
+    let findAll: sinon.SinonStub;
+    before(() => {
+      findAll = sinon
+        .stub(prisma.client, 'findUnique')
+        .resolves(clientMock.createdClient);
+    });
+
+    after(() => {
+      findAll.restore();
+    });
+
+    it('return the expected data', async () => {
+      const dentist = await dentistService.create(dentistMock.newDentistClient);
+      const token = await dentistService.login(dentist.email, dentist.password);
+
+      const client = await clientService.create(clientMock.newClient, token);
+      const response = await clientService.findById(client.id);
+
+      expect(response.id).to.be.an('string');
+      expect(response.name).to.be.equal('Luiz da Silva Azevedo');
+      expect(response.treatment).to.be.equal('Limpeza');
+      expect(typeof response.value).to.be.equal(typeof new Prisma.Decimal(100.55));
+      expect(response.numberPlots).to.be.equal(1);
+      expect(response.valuePlots).to.be.equal('100.55');
+      expect(response.dentistId).to.be.equal(dentist.id);
+
+      await prisma.client.delete({ where: { id: client.id } });
+      await prisma.dentist.delete({ where: { email: dentist.email } });
     });
   });
 });
