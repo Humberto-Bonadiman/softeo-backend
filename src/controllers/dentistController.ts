@@ -11,7 +11,6 @@ export default class DentistController {
       const createDentist = await dentistService.create({ email, name, password });
       return res.status(StatusCode.OK).json(createDentist);
     } catch (error) {
-      console.log(error);
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
     }
   }

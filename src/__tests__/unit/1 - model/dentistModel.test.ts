@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { prisma } from '../../client';
 import dentistMock from '../../mocks/dentistMock';
 
-describe('Create a new dentist by model', () => {
+describe('1 - Create a new dentist by model', () => {
   describe('when it is created successfully', () => {
     let create: sinon.SinonStub;
     before(() => {
@@ -18,7 +18,10 @@ describe('Create a new dentist by model', () => {
 
     describe('when it is successfully entered', () => {
       it('returns an object with the correct data', async () => {
-        const response = await prisma.dentist.create({ data: dentistMock.newDentist});
+        /* const response = await prisma.dentist.create({ data: dentistMock.newDentist}); */
+        const response = await prisma.dentist.create({
+          data: dentistMock.newDentist
+        });
   
         expect(response).to.be.an('object');
         expect(response).to.have.a.property('id');

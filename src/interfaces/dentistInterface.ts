@@ -3,3 +3,7 @@ export interface dentistInterface {
   name?: string,
   password: string,
 }
+
+export interface dentistCreatedInterface extends dentistInterface {
+  id: string,
+}

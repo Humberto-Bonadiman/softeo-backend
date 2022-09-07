@@ -10,7 +10,7 @@ import dentistMock from '../../mocks/dentistMock';
 const clientService = new ClientService();
 const dentistService = new DentistService();
 
-describe('Create a new client by service', () => {
+describe('4 - Create a new client by service', () => {
   describe('when it is created successfully', () => {
     let createClient: sinon.SinonStub;
     let createDentist: sinon.SinonStub;
@@ -51,7 +51,7 @@ describe('Create a new client by service', () => {
   })
 });
 
-describe('Find all clients by service', () => {
+describe('4 - Find all clients by service', () => {
   describe('when list all clients', () => {
     let findAll: sinon.SinonStub;
     before(() => {
@@ -98,7 +98,7 @@ describe('Find all clients by service', () => {
   });
 });
 
-describe('Find a client by id in service', () => {
+describe('4 - Find a client by id in service', () => {
   describe('when find the client', () => {
     let findAll: sinon.SinonStub;
     before(() => {
@@ -132,7 +132,7 @@ describe('Find a client by id in service', () => {
   });
 });
 
-describe('Update a client by id in service', () => {
+describe('4 - Update a client by id in service', () => {
   describe('when update the client', () => {
     let updateById: sinon.SinonStub;
     before(() => {
@@ -165,7 +165,7 @@ describe('Update a client by id in service', () => {
   });
 });
 
-describe('Delete a client by id in service', () => {
+describe('4 - Delete a client by id in service', () => {
   describe('when delete the client', () => {
     let deleteById: sinon.SinonStub;
     before(() => {

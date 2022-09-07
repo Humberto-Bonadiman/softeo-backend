@@ -6,7 +6,7 @@ import dentistMock from '../../mocks/dentistMock';
 
 const dentistService = new DentistService();
 
-describe('Create a new dentist by service', () => {
+describe('3- Create a new dentist by service', () => {
   describe('when it is created successfully', () => {
     let create: sinon.SinonStub;
     before(() => {
@@ -31,11 +31,11 @@ describe('Create a new dentist by service', () => {
       expect(response.name).to.be.equal('Email For Test');
 
       await prisma.dentist.delete({ where: { email: response.email } });
-    })
+    });
   });
 });
 
-describe('List all dentists by service', () => {
+describe('3 - List all dentists by service', () => {
   describe('when list all dentists successfully', () => {
     let listAll: sinon.SinonStub;
     before(() => {
@@ -73,7 +73,7 @@ describe('List all dentists by service', () => {
   });
 });
 
-describe('Login via the service', () => {
+describe('3 - Login via the service', () => {
   describe('when login succeeds', () => {
     let login: sinon.SinonStub;
     before(() => {

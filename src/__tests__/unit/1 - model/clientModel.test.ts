@@ -4,7 +4,7 @@ import { prisma } from '../../client';
 import clientMock from '../../mocks/clientMock';
 import { Prisma } from '@prisma/client';
 
-describe('Create a new client', () => {
+describe('2- Create a new client by model', () => {
   describe('when it is created successfully', () => {
     let create: sinon.SinonStub;
     before(() => {

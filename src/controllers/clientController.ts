@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import StatusCode from '../enums/StatusCode';
-import { clientInterface } from '../interfaces/clientInterface';
+import { clientInterface, clientWithDateInterface } from '../interfaces/clientInterface';
 import ClientService from '../services/clientService';
 
 class ClientController {
   public async create(req: Request, res: Response) {
     try {
       const token = req.headers.authorization;
-      const elementsClient = req.body;
+      const elementsClient: clientInterface = req.body;
       const clientService = new ClientService();
       const createClient = await clientService.create(elementsClient, token as string);
       return res.status(StatusCode.CREATED).json(createClient);
@@ -40,7 +40,7 @@ class ClientController {
   public async updateById(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const elementsBody: clientInterface = req.body;
+      const elementsBody: clientWithDateInterface = req.body;
       const clientService = new ClientService();
       const updateClientById = await clientService.updateById(id, elementsBody);
       return res.status(StatusCode.OK).json(updateClientById);
