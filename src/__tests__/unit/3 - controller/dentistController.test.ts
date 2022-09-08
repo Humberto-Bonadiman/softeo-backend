@@ -75,9 +75,9 @@ describe('5 - Login with a dentist', () => {
   });
 });
 
-describe('', () => {
+describe('5 - List all dentists', () => {
   let chaiHttpResponse;
-  describe('', () => {
+  describe('when list all successfully', () => {
     let findDentists: sinon.SinonStub;
 
     before(() => {
@@ -101,6 +101,7 @@ describe('', () => {
 
       expect(chaiHttpResponse).to.have.status(StatusCode.OK);
       expect(dentistCreate).to.be.an('array');
+      expect(dentistCreate[0]).to.be.an('object');
       expect(response.email).be.be.equal('mario_souza@email.com');
       expect(response.name).to.be.equal('Mario Carvalho Souza');
       expect(response.password).to.be.equal('minha_senha');

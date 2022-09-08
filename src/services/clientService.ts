@@ -77,7 +77,8 @@ class ClientService {
   public async deleteById(id: string) {
     try {
       const prisma = new PrismaClient();
-      await prisma.client.delete({ where: { id } });
+      const deleteClient = await prisma.client.delete({ where: { id } });
+      return deleteClient;
     } catch (err) {
       throw Error;
     }

@@ -53,8 +53,8 @@ class ClientController {
     try {
       const { id } = req.params;
       const clientService = new ClientService();
-      await clientService.deleteById(id);
-      return res.status(StatusCode.NO_CONTENT);
+      const deleteClient = await clientService.deleteById(id);
+      return res.status(StatusCode.OK).json(deleteClient);
     } catch (error) {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
     }
