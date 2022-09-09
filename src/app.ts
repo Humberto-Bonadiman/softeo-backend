@@ -1,9 +1,11 @@
 import 'dotenv/config';
+import swaggerUi from "swagger-ui-express";
 import cors from 'cors';
 import express from 'express';
 import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
 import clientRouter from './routes/clientRoute';
+import swaggerDocument from '../swagger.json';
 
 class App {
   public app: express.Express;
@@ -30,6 +32,11 @@ class App {
     this.app.use('/dentist', dentistRouter);
     this.app.use('/login', loginRouter);
     this.app.use('/client', clientRouter);
+    this.app.use(
+      "/docs",
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerDocument)
+    );
   }
 
   public start(PORT: string | number):void {
