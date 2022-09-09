@@ -9,7 +9,7 @@
   "scripts": {
     "seed": "npx prisma generate && npx prisma migrate dev && ts-node prisma/seed.ts",
     "start": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
-    "start-docker": "sudo service postgresql stop && docker-compose up -d && nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
+    "start-docker": "sudo service mysql stop && docker-compose up -d",
     "dev": "npx ts-node src/server.ts",
     "lint": "eslint src/**/*.ts",
     "migrate": "npx prisma migrate dev --name init",
