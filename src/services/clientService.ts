@@ -56,6 +56,18 @@ class ClientService {
     }
   }
 
+  public async findByDentistId(dentistId: string) {
+    try {
+      const prisma = new PrismaClient();
+      const findClientByDentistId = await prisma.client.findMany({
+        where: { dentistId },
+      });
+      return findClientByDentistId;
+    } catch (err) {
+      throw Error;
+    }
+  }
+
   public async updateById(id: string, elementsClient: clientWithDateInterface) {
     try {
       const prisma = new PrismaClient();

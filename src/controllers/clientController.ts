@@ -37,6 +37,17 @@ class ClientController {
     }
   }
 
+  public async findByDentistId(req: Request, res: Response) {
+    try {
+      const { dentistId } = req.params;
+      const clientService = new ClientService();
+      const findClientByDentistId = await clientService.findByDentistId(dentistId);
+      return res.status(StatusCode.OK).json(findClientByDentistId);
+    } catch (error) {
+      return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
+    }
+  }
+
   public async updateById(req: Request, res: Response) {
     try {
       const { id } = req.params;

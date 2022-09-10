@@ -1,6 +1,7 @@
 import * as express from 'express';
 import ClientController from '../controllers/clientController';
 import { validateClient } from '../middlewares/validateClient';
+import validateDentistId from '../middlewares/validateDentistId';
 import validateId from '../middlewares/validateId';
 import { validateToken } from '../middlewares/validateToken';
 
@@ -10,6 +11,12 @@ clientRouter
   .post('/', validateToken, validateClient, new ClientController().create)
   .get('/', validateToken, new ClientController().findAll)
   .get('/:id', validateToken, validateId, new ClientController().findById)
+  .get(
+    '/:dentistId/dentist',
+    validateToken,
+    validateDentistId,
+    new ClientController().findByDentistId
+  )
   .put(
     '/:id',
     validateToken,
@@ -18,5 +25,5 @@ clientRouter
     new ClientController().updateById
   )
   .delete('/:id', validateToken, validateId, new ClientController().deleteById);
-//
+
 export default clientRouter;
