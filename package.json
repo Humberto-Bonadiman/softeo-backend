@@ -19,6 +19,7 @@
     "dev": "npx ts-node src/server.ts",
     "lint": "eslint src/**/*.ts",
     "migrate": "npx prisma migrate dev --name init",
+    "swagger": "node ./swagger.json",
     "test": "mocha -r ts-node/register src/__tests__/unit/**/*.test.ts --exit -t 60000",
     "format": "eslint src/**/*.ts --fix"
   },
@@ -78,6 +79,7 @@
     "module-alias": "^2.2.2",
     "moment": "^2.29.4",
     "node-fetch": "^2.6.7",
+    "swagger-autogen": "^2.21.5",
     "swagger-ui-express": "^4.5.0",
     "ts-sinon": "^2.0.2",
     "tsoa": "^4.1.2"
