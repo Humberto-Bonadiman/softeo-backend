@@ -1,12 +1,7 @@
 import 'dotenv/config';
 import swaggerUi from "swagger-ui-express";
 import cors from 'cors';
-import express, {
-  RequestHandler,
-  Request,
-  Response,
-  NextFunction
-} from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
 import clientRouter from './routes/clientRoute';
@@ -20,7 +15,7 @@ class App {
   }
 
   private config():void {
-    const accessControl: RequestHandler = (
+    const accessControl = (
       _req: Request,
       res: Response,
       next: NextFunction

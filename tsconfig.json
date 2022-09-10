@@ -8,6 +8,7 @@
     "lib": ["esnext"],
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "noImplicitAny": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true
