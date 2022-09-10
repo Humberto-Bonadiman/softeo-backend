@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",
+  "engines": {
+    "node": "18.8.0"
+  },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
