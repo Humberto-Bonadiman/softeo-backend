@@ -6,7 +6,7 @@ import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
 import clientRouter from './routes/clientRoute';
 import swaggerDocument from '../swagger.json';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 class App {
   public app: express.Express;
@@ -16,7 +16,11 @@ class App {
   }
 
   private config():void {
-    const accessControl: express.RequestHandler = (_req: Request, res: Response, next) => {
+    const accessControl: express.RequestHandler = (
+      _req: Request,
+      res: Response,
+      next: NextFunction
+    ) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');
       res.header('Access-Control-Allow-Headers', '*');
