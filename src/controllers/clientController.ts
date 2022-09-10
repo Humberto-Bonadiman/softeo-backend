@@ -6,10 +6,10 @@ import ClientService from '../services/clientService';
 class ClientController {
   public async create(req: Request, res: Response) {
     try {
-      const token = req.headers.authorization;
+      const { authorization } = req.headers;
       const elementsClient: clientInterface = req.body;
       const clientService = new ClientService();
-      const createClient = await clientService.create(elementsClient, token as string);
+      const createClient = await clientService.create(elementsClient, authorization as string);
       return res.status(StatusCode.CREATED).json(createClient);
     } catch (error) {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
