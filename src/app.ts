@@ -6,20 +6,19 @@ import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
 import clientRouter from './routes/clientRoute';
 import swaggerDocument from '../swagger.json';
-import { NextFunction, Request, Response } from 'express';
 
 class App {
-  public app: express.Express;
+  public app;
   constructor() {
     this.app = express();
     this.config();
   }
 
   private config():void {
-    const accessControl: express.RequestHandler = (
-      _req: Request,
-      res: Response,
-      next: NextFunction
+    const accessControl = (
+      _req: express.Request,
+      res: express.Response,
+      next: express.NextFunction
     ) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');
@@ -31,7 +30,7 @@ class App {
     this.app.use(express.json());
     this.app.use(cors());
 
-    this.app.get('/', (_req: Request, res: Response) => {
+    this.app.get('/', (_req: express.Request, res: express.Response) => {
       res.status(200).json({ message: 'Rodando' });
     });
     this.app.use('/dentist', dentistRouter);
