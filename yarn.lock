@@ -735,6 +735,11 @@
   "resolved" "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.3.tgz"
   "version" "1.0.3"
 
+"@tsconfig/node18@^1.0.1":
+  "integrity" "sha512-sNFeK6X2ATlhlvzyH4kKYQlfHXE2f2/wxtB9ClvYXevWpmwkUT7VaSrjIN9E76Qebz8qP5JOJJ9jD3QoD/Z9TA=="
+  "resolved" "https://registry.npmjs.org/@tsconfig/node18/-/node18-1.0.1.tgz"
+  "version" "1.0.1"
+
 "@tsoa/cli@^4.1.2":
   "integrity" "sha512-0Q7c0oygbmzksPAqtXTlc8Ta8oj8Zo5VjOtQA9SvHFkWwgtJ0rpm+S0Ia90G6lFznLO/3vuxjfxMIvRYQ5JiGA=="
   "resolved" "https://registry.npmjs.org/@tsoa/cli/-/cli-4.1.2.tgz"
@@ -3237,7 +3242,7 @@
   "resolved" "https://registry.npmjs.org/joi-to-typescript/-/joi-to-typescript-4.0.5.tgz"
   "version" "4.0.5"
 
-"joi@17.x":
+"joi@^17.6.0", "joi@17.x":
   "integrity" "sha512-OX5dG6DTbcr/kbMFj0KGYxuew69HPcAE3K/sZpEV2nP6e/j/C0HV+HNiBPCASxdx5T7DMoa0s8UeHWMnb6n2zw=="
   "resolved" "https://registry.npmjs.org/joi/-/joi-17.6.0.tgz"
   "version" "17.6.0"

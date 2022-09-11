@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ES2019",
     "module": "CommonJS",
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./build",
     "strict": true,
+    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "lib": ["esnext"],
     "esModuleInterop": true,
     "moduleResolution": "node",
     "noImplicitAny": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "resolveJsonModule": true
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "paths": {
+      "*": ["node_modules/*"]
+    }
   },
   "include": ["./**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/__tests__"]
 }
