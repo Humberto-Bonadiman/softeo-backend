@@ -1,11 +1,15 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 import 'dotenv/config';
-import swaggerUi from "swagger-ui-express";
-import cors from 'cors';
-import express, { NextFunction, Request, Response } from 'express';
 import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
 import clientRouter from './routes/clientRoute';
 import swaggerDocument from '../swagger.json';
+
+const swaggerUi = require('swagger-ui-express');
+const express = require('express');
+const cors = require('cors');
+const { Request, Response, NextFunction } = require('express');
 
 class App {
   public app;
@@ -16,9 +20,9 @@ class App {
 
   private config():void {
     const accessControl = (
-      _req: Request,
-      res: Response,
-      next: NextFunction
+      _req: typeof Request,
+      res: typeof Response,
+      next: typeof NextFunction
     ) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');
@@ -30,7 +34,7 @@ class App {
     this.app.use(express.json());
     this.app.use(cors());
 
-    this.app.get('/', (_req: Request, res: Response) => {
+    this.app.get('/', (_req: typeof Request, res: typeof Response) => {
       res.status(200).json({ message: 'Rodando' });
     });
     this.app.use('/dentist', dentistRouter);

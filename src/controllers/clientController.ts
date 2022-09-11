@@ -4,7 +4,10 @@ import { clientInterface, clientWithDateInterface } from '../interfaces/clientIn
 import ClientService from '../services/clientService';
 
 class ClientController {
-  public async create(req: Request, res: Response) {
+  public async create(
+    req: typeof Request,
+    res: typeof Response,
+  ) {
     try {
       const { authorization } = req.headers;
       const elementsClient: clientInterface = req.body;
@@ -16,7 +19,10 @@ class ClientController {
     }
   }
 
-  public async findAll(_req: Request, res: Response) {
+  public async findAll(
+    _req: typeof Request,
+    res: typeof Response,
+  ) {
     try {
       const clientService = new ClientService();
       const findAllClients = await clientService.findAll();
@@ -26,7 +32,10 @@ class ClientController {
     }
   }
 
-  public async findById(req: Request, res: Response) {
+  public async findById(
+    req: typeof Request,
+    res: typeof Response,
+  ) {
     try {
       const { id } = req.params;
       const clientService = new ClientService();
@@ -37,7 +46,10 @@ class ClientController {
     }
   }
 
-  public async findByDentistId(req: Request, res: Response) {
+  public async findByDentistId(
+    req: typeof Request,
+    res: typeof Response,
+  ) {
     try {
       const { dentistId } = req.params;
       const clientService = new ClientService();
@@ -48,7 +60,10 @@ class ClientController {
     }
   }
 
-  public async updateById(req: Request, res: Response) {
+  public async updateById(
+    req: typeof Request,
+    res: typeof Response,
+  ) {
     try {
       const { id } = req.params;
       const elementsBody: clientWithDateInterface = req.body;
@@ -60,7 +75,10 @@ class ClientController {
     }
   }
 
-  public async deleteById(req: Request, res: Response) {
+  public async deleteById(
+    req: typeof Request,
+    res: typeof Response,
+  ) {
     try {
       const { id } = req.params;
       const clientService = new ClientService();

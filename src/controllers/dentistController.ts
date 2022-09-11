@@ -4,7 +4,7 @@ import StatusCode from '../enums/StatusCode';
 import { dentistInterface } from '../interfaces/dentistInterface';
 
 export default class DentistController {
-  public async create(req: Request, res: Response) {
+  public async create(req: typeof Request, res: typeof Response) {
     try {
       const { email, name, password }: dentistInterface = req.body;
       const dentistService = new DentistService();
@@ -15,7 +15,7 @@ export default class DentistController {
     }
   }
 
-  public async listAll(_req: Request, res: Response) {
+  public async listAll(_req: typeof Request, res: typeof Response) {
     try {
       const dentistService = new DentistService();
       const listAllDentists = await dentistService.listAll();
@@ -25,7 +25,7 @@ export default class DentistController {
     }
   }
 
-  public async login(req: Request, res: Response) {
+  public async login(req: typeof Request, res: typeof Response) {
     try {
       const {email, password} = req.body;
       const loginDentist = await new DentistService().login(email, password);

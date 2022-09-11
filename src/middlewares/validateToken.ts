@@ -7,7 +7,11 @@ import { JWT_SECRET } from '../utils/config';
 
 const prisma = new PrismaClient();
 
-export const validateToken = async (req: Request, res: Response, next: NextFunction) => {
+export const validateToken = async (
+  req: typeof Request,
+  res: typeof Response,
+  next: typeof NextFunction
+) => {
   const { authorization } = req.headers;
   if (!authorization) {
     return res.status(401).json({ message: ErrorMessage.TOKEN_NOT_FOUND });

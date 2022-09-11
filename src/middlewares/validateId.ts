@@ -7,7 +7,11 @@ const prisma = new PrismaClient();
 
 export const schemeId = Joi.object({ id: Joi.string().required() });
 
-const validateId = async (req: Request, res: Response, next: NextFunction) => {
+const validateId = async (
+  req: typeof Request,
+  res: typeof Response,
+  next: typeof NextFunction
+) => {
   const { id } = req.params;
   const findClientById = await prisma.client.findUniqueOrThrow({
     where: { id },

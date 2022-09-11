@@ -15,7 +15,11 @@ export const schemeLogin = Joi.object({
   }),
 });
 
-export const validateLogin = async (req: Request, res: Response, next: NextFunction) => {
+export const validateLogin = async (
+  req: typeof Request,
+  res: typeof Response,
+  next: typeof NextFunction
+) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(401).json({ message: ErrorMessage.NOT_EMPTY });

@@ -15,7 +15,11 @@ const schemeClient = Joi.object({
   numberPlots: Joi.number().required(),
 });
 
-export const validateClient = async (req: Request, res: Response, next: NextFunction) => {
+export const validateClient = async (
+  req: typeof Request,
+  res: typeof Response,
+  next: typeof NextFunction
+) => {
   const { name, treatment, value, numberPlots } = req.body;
   if (!name || !treatment || !value || !numberPlots) {
     return res.status(401).json({ message: ErrorMessage.NOT_EMPTY });

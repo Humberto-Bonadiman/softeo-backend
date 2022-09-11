@@ -19,7 +19,11 @@ const schemeDentist = Joi.object({
   }),
 });
 
-export const validateDentist = async (req: Request, res: Response, next: NextFunction) => {
+export const validateDentist = async (
+  req: typeof Request,
+  res: typeof Response,
+  next: typeof NextFunction
+) => {
   const { email, name, password } = req.body;
   if (!email || !password) {
     return res.status(401).json({ message: ErrorMessage.NOT_EMPTY });
