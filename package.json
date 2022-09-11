@@ -80,5 +80,6 @@
     "swagger-ui-express": "^4.5.0",
     "ts-sinon": "^2.0.2",
     "tsoa": "^4.1.2"
-  }
+  },
+  "type": "module"
 }
