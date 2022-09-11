@@ -1,15 +1,12 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
 import 'dotenv/config';
+import swaggerUi from 'swagger-ui-express';
+import express from 'express';
+import cors from 'cors';
+import { Request, Response, NextFunction } from 'express';
 import dentistRouter from './routes/dentistRoute';
 import loginRouter from './routes/loginRoute';
 import clientRouter from './routes/clientRoute';
 import swaggerDocument from '../swagger.json';
-
-const swaggerUi = require('swagger-ui-express');
-const express = require('express');
-const cors = require('cors');
-const { Request, Response, NextFunction } = require('express');
 
 class App {
   public app;

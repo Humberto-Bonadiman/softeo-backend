@@ -1,11 +1,7 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
 import Joi from 'joi';
 import ErrorMessage from '../enums/ErrorMessage';
-
-
-const { Request, Response, NextFunction } = require('express');
 
 const prisma = new PrismaClient();
 
