@@ -1,7 +1,7 @@
 import * as express from 'express';
 import ClientController from '../controllers/clientController';
 import { validateClient } from '../middlewares/validateClient';
-import validateDentistId from '../middlewares/validateDentistId';
+// import validateDentistId from '../middlewares/validateDentistId';
 import validateId from '../middlewares/validateId';
 import { validateToken } from '../middlewares/validateToken';
 
@@ -12,9 +12,8 @@ clientRouter
   .get('/', validateToken, new ClientController().findAll)
   .get('/:id', validateToken, validateId, new ClientController().findById)
   .get(
-    '/:dentistId/dentist',
+    '/dentist',
     validateToken,
-    validateDentistId,
     new ClientController().findByDentistId
   )
   .put(

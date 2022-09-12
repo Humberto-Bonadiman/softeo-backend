@@ -51,9 +51,9 @@ class ClientController {
     res: typeof Response,
   ) {
     try {
-      const { dentistId } = req.params;
+      const { authorization } = req.headers;
       const clientService = new ClientService();
-      const findClientByDentistId = await clientService.findByDentistId(dentistId);
+      const findClientByDentistId = await clientService.findByDentistId(authorization);
       return res.status(StatusCode.OK).json(findClientByDentistId);
     } catch (error) {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
