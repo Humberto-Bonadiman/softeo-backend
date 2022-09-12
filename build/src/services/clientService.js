@@ -55,11 +55,13 @@ class ClientService {
             throw Error;
         }
     }
-    async findByDentistId(dentistId) {
+    async findByDentistId(token) {
         try {
             const prisma = new client_1.PrismaClient();
+            const decoded = (0, jsonwebtoken_1.verify)(token, config_1.JWT_SECRET);
+            const idDentist = decoded.data.id;
             const findClientByDentistId = await prisma.client.findMany({
-                where: { dentistId },
+                where: { dentistId: idDentist },
             });
             return findClientByDentistId;
         }
