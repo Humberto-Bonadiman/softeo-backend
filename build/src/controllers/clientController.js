@@ -41,9 +41,9 @@ class ClientController {
     }
     async findByDentistId(req, res) {
         try {
-            const { dentistId } = req.params;
+            const { authorization } = req.headers;
             const clientService = new clientService_1.default();
-            const findClientByDentistId = await clientService.findByDentistId(dentistId);
+            const findClientByDentistId = await clientService.findByDentistId(authorization);
             return res.status(StatusCode_1.default.OK).json(findClientByDentistId);
         }
         catch (error) {

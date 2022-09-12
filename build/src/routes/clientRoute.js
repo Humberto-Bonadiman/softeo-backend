@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const clientController_1 = __importDefault(require("../controllers/clientController"));
 const validateClient_1 = require("../middlewares/validateClient");
-const validateDentistId_1 = __importDefault(require("../middlewares/validateDentistId"));
+// import validateDentistId from '../middlewares/validateDentistId';
 const validateId_1 = __importDefault(require("../middlewares/validateId"));
 const validateToken_1 = require("../middlewares/validateToken");
 const clientRouter = express.Router();
@@ -37,7 +37,7 @@ clientRouter
     .post('/', validateToken_1.validateToken, validateClient_1.validateClient, new clientController_1.default().create)
     .get('/', validateToken_1.validateToken, new clientController_1.default().findAll)
     .get('/:id', validateToken_1.validateToken, validateId_1.default, new clientController_1.default().findById)
-    .get('/:dentistId/dentist', validateToken_1.validateToken, validateDentistId_1.default, new clientController_1.default().findByDentistId)
+    .get('/dentist', validateToken_1.validateToken, new clientController_1.default().findByDentistId)
     .put('/:id', validateToken_1.validateToken, validateId_1.default, validateClient_1.validateClient, new clientController_1.default().updateById)
     .delete('/:id', validateToken_1.validateToken, validateId_1.default, new clientController_1.default().deleteById);
 exports.default = clientRouter;
