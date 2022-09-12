@@ -10,12 +10,12 @@ const clientRouter = express.Router();
 clientRouter
   .post('/', validateToken, validateClient, new ClientController().create)
   .get('/', validateToken, new ClientController().findAll)
-  .get('/:id', validateToken, validateId, new ClientController().findById)
   .get(
     '/dentist',
     validateToken,
     new ClientController().findByDentistId
   )
+  .get('/:id', validateToken, validateId, new ClientController().findById)
   .put(
     '/:id',
     validateToken,

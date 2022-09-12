@@ -36,8 +36,8 @@ const clientRouter = express.Router();
 clientRouter
     .post('/', validateToken_1.validateToken, validateClient_1.validateClient, new clientController_1.default().create)
     .get('/', validateToken_1.validateToken, new clientController_1.default().findAll)
-    .get('/:id', validateToken_1.validateToken, validateId_1.default, new clientController_1.default().findById)
     .get('/dentist', validateToken_1.validateToken, new clientController_1.default().findByDentistId)
+    .get('/:id', validateToken_1.validateToken, validateId_1.default, new clientController_1.default().findById)
     .put('/:id', validateToken_1.validateToken, validateId_1.default, validateClient_1.validateClient, new clientController_1.default().updateById)
     .delete('/:id', validateToken_1.validateToken, validateId_1.default, new clientController_1.default().deleteById);
 exports.default = clientRouter;

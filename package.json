@@ -14,7 +14,7 @@
     "dev": "npx ts-node src/server.ts",
     "build": "tsc",
     "start": "node ./build/src/server.js",
-    "nodemon": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
+    "nodemon": "nodemon --watch 'src/' --exec 'node build/src/server.js' -e js",
     "start-docker": "sudo service mysql stop && docker-compose up -d",
     "lint": "eslint src/**/*.ts",
     "migrate": "npx prisma migrate dev --name init",
