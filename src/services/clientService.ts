@@ -56,11 +56,13 @@ class ClientService {
     }
   }
 
-  public async findByDentistId(dentistId: string) {
+  public async findByDentistId(token: string) {
     try {
       const prisma = new PrismaClient();
+      const decoded = verify(token, JWT_SECRET as string);
+      const idDentist = (decoded as tokenInterface).data.id;
       const findClientByDentistId = await prisma.client.findMany({
-        where: { dentistId },
+        where: { dentistId: idDentist },
       });
       return findClientByDentistId;
     } catch (err) {
