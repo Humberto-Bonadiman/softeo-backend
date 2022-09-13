@@ -20,7 +20,6 @@ class App {
     config() {
         this.app.use((0, cors_1.default)());
         const accessControl = (_req, res, next) => {
-            res.source('/:path*');
             res.header('Access-Control-Allow-Credentials', 'true');
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');

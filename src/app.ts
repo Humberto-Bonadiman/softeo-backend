@@ -22,7 +22,6 @@ class App {
       res: typeof Response,
       next: typeof NextFunction
     ) => {
-      res.source('/:path*');
       res.header('Access-Control-Allow-Credentials', 'true');
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');
