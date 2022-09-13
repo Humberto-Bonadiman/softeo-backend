@@ -24,6 +24,7 @@ class App {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');
       res.header('Access-Control-Allow-Headers', '*');
+      res.header('Access-Control-Allow-Credentials', 'true');
       next();
     };
 

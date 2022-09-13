@@ -59,15 +59,10 @@ class ClientService {
         try {
             const prisma = new client_1.PrismaClient();
             const decoded = (0, jsonwebtoken_1.verify)(token, config_1.JWT_SECRET);
-            console.log(decoded);
             const idDentist = decoded.data.id;
-            console.log(idDentist);
             const findClientByDentistId = await prisma.client.findMany({
                 where: { dentistId: idDentist },
             });
-            if (!findClientByDentistId) {
-                return [];
-            }
             return findClientByDentistId;
         }
         catch (err) {
