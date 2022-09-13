@@ -18,16 +18,17 @@ class App {
         this.config();
     }
     config() {
+        this.app.use((0, cors_1.default)());
         const accessControl = (_req, res, next) => {
+            res.source('/:path*');
+            res.header('Access-Control-Allow-Credentials', 'true');
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT');
             res.header('Access-Control-Allow-Headers', '*');
-            res.header('Access-Control-Allow-Credentials', 'true');
             next();
         };
         this.app.use(accessControl);
         this.app.use(express_1.default.json());
-        this.app.use((0, cors_1.default)());
         this.app.get('/', (_req, res) => {
             res.status(200).json({ message: 'Rodando' });
         });
