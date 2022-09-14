@@ -279,7 +279,7 @@
         }
       }
     },
-    "/client/{dentistId}/dentist": {
+    "/client/dentist/{dentistId}": {
       "get": {
         "tags": ["Client"],
         "parameters": [
