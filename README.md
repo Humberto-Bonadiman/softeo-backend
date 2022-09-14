@@ -29,12 +29,17 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
   npm install
 ```
 
-4. Gere a migration do projeto através do comando:
+4. Crie um arquivo .env e copie os dados das variáveis de ambiente do arquivo .env.example conforme os dados do seu MySQL:
+```javascript
+  touch .env
+```
+
+5. Gere a migration do projeto através do comando:
 ```javascript
   npm run migrate
 ```
 
-5. Por último, rode o comando **npm start** e acesse o projeto via browser, no caminho `http://localhost:3001/`.
+6. Por último, rode o comando **npm start** e acesse o projeto via browser, no caminho `http://localhost:3001/`.
 ```javascript
   npm start
 ```
@@ -44,6 +49,23 @@ Ou também é possível rodar a aplicação pelo comando:
 ```
 
 ---
+
+## Variavéis de ambiente
+```javascript
+  CLEARDB_DATABASE_URL="mysql://{userMysql}:{randompassword}@localhost:3306/dentist_db?schema=public"
+  JWT_SECRET=put_secret_key_here
+  DATABASE_PASSWORD=prisma
+  PORT=3001
+```
+
+Troque em CLEARDB_DATABASE_URL {userMysql} pelo seu usuário do MySQL e em {randompassword} pela sua senha do MySQL.
+<br/>
+Observação: remover os chaves({}) também desta linha.
+<br/>
+Troque o valor de JWT_SECRET pelo valor que lhe trouxer mais segurança pois ele será necessário para gerar o token através do login.
+<br/>
+E o valor de PORT é o valor onde a aplicação irá rodar localmente. Neste valor da variável de ambiente a aplicação irá rodar no caminho `http://localhost:3001`.
+
 
 ## Heroku da aplicação
 
