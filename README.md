@@ -81,6 +81,6 @@ Inicie a aplicação:
 
 ## Documentação com Swagger
 
-![Documentação Swagger](swagger.png)
+![Documentação Swagger](images/swagger.png)
 
 Para acessar a documentação pelo swagger rode o comando **npm start** e acesse o projeto via browser, no caminho `http://localhost:3001/docs`
